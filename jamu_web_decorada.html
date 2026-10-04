@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="JAMU - Electricidad y climatización en Ronda, Málaga y alrededores.">
+  <meta name="theme-color" content="#1769ff">
+  <title>JAMU | Electricidad y Climatización</title>
+  <style>
+    :root{
+      --blue:#1769ff;
+      --blue-dark:#0d47c7;
+      --blue-light:#f3f7ff;
+      --text:#1f2937;
+      --muted:#667085;
+      --line:#dbe5ef;
+      --white:#ffffff;
+      --navy:#11233f;
+      --soft-shadow:0 14px 35px rgba(26,64,120,.10);
+      --orange:#ff7a00;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 8% 12%, rgba(23,105,255,.07), transparent 24%),
+        radial-gradient(circle at 92% 22%, rgba(255,122,0,.07), transparent 22%),
+        #fff;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit}
+    .wrap{width:min(var(--max),calc(100% - 32px));margin:auto}
+
+    header{
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      box-shadow:0 4px 18px rgba(20,50,95,.05);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    nav{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+    }
+
+    .logo{
+      width:54px;
+      height:54px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background:#fff;
+      border:2px solid var(--blue);
+      box-shadow:0 6px 18px rgba(23,105,255,.12);
+      overflow:hidden;
+    }
+
+    .logo svg{
+      width:42px;
+      height:42px;
+      display:block;
+    }
+
+    .brand strong{
+      display:block;
+      font-size:1.28rem;
+      letter-spacing:.12em;
+      color:#132238;
+    }
+
+    .brand small{
+      display:block;
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      font-weight:700;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:13px 18px;
+      border-radius:12px;
+      font-weight:800;
+      border:1px solid var(--blue);
+      transition:.2s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 24px rgba(23,105,255,.14);
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#1769ff,#0d47c7);
+      color:#fff;
+    }
+
+    .btn-outline{
+      color:var(--blue);
+      background:#fff;
+    }
+
+    .hero{
+      padding:78px 0;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 82% 20%,rgba(255,122,0,.12),transparent 20%),
+        radial-gradient(circle at 15% 16%,rgba(23,105,255,.11),transparent 24%),
+        linear-gradient(180deg,#fff 0%,var(--blue-light) 100%);
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      right:-110px;
+      bottom:-130px;
+      border:36px solid rgba(23,105,255,.06);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:46px;
+      align-items:center;
+    }
+
+    h1{
+      margin:12px 0 18px;
+      font-size:clamp(2.5rem,6vw,5rem);
+      line-height:.98;
+      color:#15233a;
+      letter-spacing:-.035em;
+    }
+
+    .mini-label{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:#fff;
+      border:1px solid #dce7ff;
+      color:var(--blue);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.85rem;
+      font-weight:800;
+      box-shadow:0 7px 20px rgba(23,105,255,.08);
+    }
+
+    .mini-label::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--orange);
+    }
+
+    h1 span{color:var(--blue)}
+
+    .hero p{
+      max-width:680px;
+      margin:0;
+      color:var(--muted);
+      font-size:1.08rem;
+    }
+
+    .hero-actions{
+      margin-top:26px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .hero-card{
+      min-height:320px;
+      border-radius:26px;
+      background:
+        radial-gradient(circle at 80% 20%,rgba(255,255,255,.16),transparent 24%),
+        radial-gradient(circle at 20% 82%,rgba(255,122,0,.18),transparent 24%),
+        linear-gradient(135deg,#1769ff,#0d47c7);
+      color:#fff;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:30px;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 22px 50px rgba(23,105,255,.22);
+    }
+
+    .hero-card::before,
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    .hero-card::before{
+      width:210px;height:210px;
+    }
+
+    .hero-card::after{
+      width:285px;height:285px;
+    }
+
+    .hero-card .icons{
+      font-size:4.5rem;
+      margin-bottom:10px;
+    }
+
+    .hero-card strong{
+      font-size:1.4rem;
+    }
+
+    section{padding:66px 0}
+
+    .section-title{
+      margin-bottom:28px;
+    }
+
+    .section-title h2{
+      margin:0 0 8px;
+      font-size:2rem;
+      color:#132238;
+    }
+
+    .section-title h2::after{
+      content:"";
+      display:block;
+      width:54px;
+      height:4px;
+      margin-top:8px;
+      border-radius:999px;
+      background:var(--orange);
+    }
+
+    .section-title p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .services{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .service{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:26px;
+      background:#fff;
+      box-shadow:var(--soft-shadow);
+      transition:.2s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .service::after{
+      content:"";
+      position:absolute;
+      width:90px;height:90px;
+      border-radius:50%;
+      right:-38px;bottom:-40px;
+      background:rgba(23,105,255,.06);
+    }
+
+    .service:hover{
+      transform:translateY(-4px);
+      border-color:#c7d8ff;
+    }
+
+    .service .icon{
+      width:52px;
+      height:52px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      font-size:1.7rem;
+      margin-bottom:14px;
+      background:linear-gradient(135deg,#edf4ff,#fff3e8);
+    }
+
+    .service h3{
+      margin:0 0 8px;
+      font-size:1.15rem;
+    }
+
+    .service p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .brands{
+      background:
+        linear-gradient(135deg,rgba(23,105,255,.05),rgba(255,122,0,.04)),
+        var(--blue-light);
+      border-top:1px solid #e3ebf8;
+      border-bottom:1px solid #e3ebf8;
+    }
+
+    .brand-groups{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .brand-box{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:26px;
+      box-shadow:var(--soft-shadow);
+    }
+
+    .brand-box h3{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:var(--navy);
+      font-size:1.2rem;
+    }
+
+    .brand-box h3::before{
+      content:"";
+      width:8px;
+      height:28px;
+      border-radius:999px;
+      background:linear-gradient(180deg,var(--blue),var(--orange));
+    }
+
+    .brand-box h3{
+      margin-top:0;
+      margin-bottom:18px;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+    }
+
+    .tag{
+      border:1px solid #d9e4ff;
+      background:#fff;
+      border-radius:999px;
+      padding:9px 12px;
+      font-weight:700;
+      font-size:.92rem;
+      box-shadow:0 4px 12px rgba(23,105,255,.06);
+      transition:.2s ease;
+    }
+
+    .tag:hover{
+      border-color:#adc6ff;
+      transform:translateY(-2px);
+      color:var(--blue);
+    }
+
+    .contact{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+      align-items:start;
+    }
+
+    .contact-box{
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:28px;
+      background:#fff;
+      box-shadow:var(--soft-shadow);
+    }
+
+    .contact-box h2{
+      margin-top:0;
+    }
+
+    .contact-list{
+      display:grid;
+      gap:10px;
+      margin:22px 0 0;
+    }
+
+    .contact-list a,
+    .contact-list div{
+      padding:13px 14px;
+      background:linear-gradient(90deg,var(--blue-light),#fff);
+      border-radius:12px;
+      font-weight:700;
+      border:1px solid #e2eaff;
+    }
+
+    footer{
+      padding:30px 0;
+      border-top:4px solid var(--blue);
+      color:var(--muted);
+      font-size:.92rem;
+      background:#fbfdff;
+    }
+
+    .footer{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    @media(max-width:850px){
+      .hero-grid,
+      .contact,
+      .brand-groups{
+        grid-template-columns:1fr;
+      }
+
+      .services{
+        grid-template-columns:1fr;
+      }
+
+      .nav-links a:not(.btn){
+        display:none;
+      }
+    }
+
+    @media(max-width:520px){
+      .brand small{display:none}
+      .hero{padding:52px 0}
+      section{padding:52px 0}
+      .hero-card{min-height:220px}
+      .hero-card .icons{font-size:3.5rem}
+      .nav-links .btn{padding:11px 13px;font-size:.9rem}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="#inicio">
+          <div class="logo" aria-hidden="true">
+            <svg viewBox="0 0 64 64" role="img">
+              <circle cx="32" cy="32" r="28" fill="#1769ff"/>
+              <path d="M35 8 20 34h12l-4 22 16-28H32z" fill="#ff7a00"/>
+              <path d="M47 18v28M35 32h24M38.5 23.5l17 17M55.5 23.5l-17 17"
+                    stroke="#ffffff" stroke-width="3.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <strong>JAMU</strong>
+            <small>Electricidad y Climatización</small>
+          </div>
+        </a>
+
+        <div class="nav-links">
+          <a href="#servicios">Servicios</a>
+          <a href="#marcas">Marcas</a>
+          <a href="#contacto">Contacto</a>
+          <a class="btn btn-primary" href="#contacto">Contacto</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="mini-label">Ronda · Málaga y alrededores</div>
+          <h1>JAMU <span>Electricidad y Climatización</span></h1>
+          <p>
+            Instalaciones, reparaciones y mantenimiento en Ronda, Málaga y alrededores.
+          </p>
+
+        </div>
+
+        <div class="hero-card">
+          <div class="icons">⚡ ❄️</div>
+          <strong>Electricidad y aire acondicionado</strong>
+          <span style="margin-top:8px;opacity:.85">Instalación · reparación · mantenimiento</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>Servicios</h2>
+        </div>
+
+        <div class="services">
+          <article class="service">
+            <div class="icon">⚡</div>
+            <p>Instalaciones, cuadros eléctricos, mecanismos, puntos de luz y reformas.</p>
+          </article>
+
+          <article class="service">
+            <div class="icon">🛠️</div>
+            <h3>Averías y mantenimiento</h3>
+            <p>Revisión y reparación de instalaciones eléctricas y equipos.</p>
+          </article>
+
+          <article class="service">
+            <div class="icon">❄️</div>
+            <p>Instalación, sustitución y mantenimiento de aire acondicionado.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="brands" id="marcas">
+      <div class="wrap">
+        <div class="brand-groups">
+          <div class="brand-box">
+            <h3>Electricidad</h3>
+            <div class="tags">
+              <span class="tag">Schneider Electric</span>
+              <span class="tag">Legrand</span>
+              <span class="tag">Simon</span>
+              <span class="tag">ABB</span>
+              <span class="tag">Hager</span>
+              <span class="tag">Niessen</span>
+              <span class="tag">Bticino</span>
+              <span class="tag">Gewiss</span>
+              <span class="tag">Chint</span>
+              <span class="tag">Siemens</span>
+            </div>
+          </div>
+
+          <div class="brand-box">
+            <h3>Climatización</h3>
+            <div class="tags">
+              <span class="tag">Daikin</span>
+              <span class="tag">Mitsubishi Electric</span>
+              <span class="tag">Fujitsu</span>
+              <span class="tag">LG</span>
+              <span class="tag">Panasonic</span>
+              <span class="tag">Samsung</span>
+              <span class="tag">Hisense</span>
+              <span class="tag">Carrier</span>
+              <span class="tag">Toshiba</span>
+              <span class="tag">Midea</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="wrap contact">
+        <div class="contact-box">
+          <h2>Contacto</h2>
+          <p>Ronda, Málaga y alrededores.</p>
+
+          <div class="contact-list">
+            <a href="tel:+34634718281">📞 634 718 281</a>
+            <a href="https://wa.me/34634718281" target="_blank" rel="noopener">💬 WhatsApp</a>
+            <a href="mailto:rauljm239@gmail.com">✉️ rauljm239@gmail.com</a>
+            <div>📍 Ronda, Málaga</div>
+          </div>
+        </div>
+
+        <div class="contact-box">
+          <h2>Pedir presupuesto</h2>
+          <p>
+            Puedes contactar directamente por teléfono o WhatsApp para consultar cualquier trabajo.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary"
+               href="https://wa.me/34634718281?text=Hola%20JAMU,%20quiero%20pedir%20presupuesto"
+               target="_blank" rel="noopener">Pedir presupuesto</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer">
+      <div><strong>JAMU</strong> · Electricidad y Climatización</div>
+      <div>© <span id="year"></span> JAMU</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
